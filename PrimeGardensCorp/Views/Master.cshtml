@@ -1,0 +1,149 @@
+﻿@inherits UmbracoTemplatePage
+@{
+    Layout = null;
+
+    // Get basic design settings from the homepage
+    var home = (Home)Model.Content.Site();
+    var colorTheme = Umbraco.GetPreValueAsString(home.ColorTheme);
+    var font = Umbraco.GetPreValueAsString(home.Font);
+}
+
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>@Model.Content.Name - @home.Sitename</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+<!-- Favicons -->
+  <link href="@Url.Content("~/img/favicon.png")"  rel="icon">
+  <link href="@Url.Content("~/img/apple-touch-icon.png")" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Raleway:300,400,500,700,800|Montserrat:300,400,700" rel="stylesheet">
+
+  <!-- Bootstrap CSS File -->
+  <link href="@Url.Content("~/lib/bootstrap/css/bootstrap.min.css")"  rel="stylesheet">
+
+  <!-- Libraries CSS Files -->
+  <link href="@Url.Content("~/lib/font-awesome/css/font-awesome.min.css")"  rel="stylesheet">
+  <link href="@Url.Content("~/lib/animate/animate.min.css")"  rel="stylesheet">
+  <link href="@Url.Content("~/lib/ionicons/css/ionicons.min.css")" rel="stylesheet">
+  <link href="@Url.Content("~/lib/owlcarousel/assets/owl.carousel.min.css")"  rel="stylesheet">
+  <link href="@Url.Content("~/lib/magnific-popup/magnific-popup.css")"  rel="stylesheet">
+  <link href="@Url.Content("~/lib/ionicons/css/ionicons.min.css")" rel="stylesheet">
+
+  <!-- Main Stylesheet File -->
+  <link href="@Url.Content("~/css/style.css")"  rel="stylesheet">
+  
+ 
+    @RenderSection("Header", required: false)
+</head>
+
+ <!--==========================
+    Top Bar
+  ============================-->
+  <section id="topbar" class="d-none d-lg-block">
+    <div class="container clearfix">
+      <div class="contact-info float-left">
+        <i class="fa fa-envelope-o"></i> <a href="mailto:contact@example.com">contact@example.com</a>
+        <i class="fa fa-phone"></i> +1 5589 55488 55
+      </div>
+      <div class="social-links float-right">
+        <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
+        <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
+        <a href="#" class="instagram"><i class="fa fa-instagram"></i></a>
+        <a href="#" class="google-plus"><i class="fa fa-google-plus"></i></a>
+        <a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a>
+      </div>
+    </div>
+  </section>
+
+  <!--==========================
+    Header
+  ============================-->
+  <header id="header">
+    <div class="container">
+
+      <div id="logo" class="pull-left">
+          
+           @if (home.SiteLogo != null && !string.IsNullOrEmpty(home.SiteLogo.Url))
+            {
+             <a href="/"><img src="@home.SiteLogo.Url" alt="@home.Sitename" title="" height="52" width="150"/></a>
+               
+            }
+            else
+            {
+             <h1><a href="/" class="scrollto">@home.Sitename</a></h1>
+               
+            } 
+      </div>
+
+      <nav id="nav-menu-container">
+        <ul class="nav-menu">
+             @Html.Partial("~/views/partials/navigation/topNavigation.cshtml")
+         
+        </ul>
+      </nav><!-- #nav-menu-container -->
+    </div>
+  </header>
+    <!-- #header -->
+    
+
+
+<body id="body"> 
+
+    <main>
+        @RenderBody()
+    </main>
+
+
+<!--==========================
+    Footer
+  ============================-->
+  <footer id="footer">
+    <div class="container">
+      <div class="copyright">
+        &copy; Copyright <strong>Reveal</strong>. All Rights Reserved
+      </div>
+      <div class="credits">
+        <!--
+          All the links in the footer should remain intact.
+          You can delete the links only if you purchased the pro version.
+          Licensing information: https://bootstrapmade.com/license/
+          Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=Reveal
+        -->
+         @home.FooterAddress
+      </div>
+    </div>
+  </footer><!-- #footer -->
+
+  <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+
+  <!-- JavaScript Libraries -->
+  <script src="@Url.Content("~/lib/jquery/jquery.min.js")"></script>
+  <script src="@Url.Content("~/lib/jquery/jquery-migrate.min.js")"></script>
+  <script src="@Url.Content("~/lib/bootstrap/js/bootstrap.bundle.min.js")"></script>
+  <script src="@Url.Content("~/lib/easing/easing.min.js")"></script>
+  <script src="@Url.Content("~/lib/superfish/hoverIntent.js")"></script>
+  <script src="@Url.Content("~/lib/superfish/superfish.min.js")"></script>
+  <script src="@Url.Content("~/lib/wow/wow.min.js")"></script>
+  <script src="@Url.Content("~/lib/owlcarousel/owl.carousel.min.js")"></script>
+  <script src="@Url.Content("~/lib/magnific-popup/magnific-popup.min.js")"></script>
+  <script src="@Url.Content("~/lib/sticky/sticky.js")"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD8HeI8o-c1NppZA-92oYlXakhDPYR7XMY"></script>
+   
+
+  <!-- Template Main Javascript File -->
+  <script src="@Url.Content("~/js/main.js")"></script>
+
+ 
+</body>
+
+</html>
