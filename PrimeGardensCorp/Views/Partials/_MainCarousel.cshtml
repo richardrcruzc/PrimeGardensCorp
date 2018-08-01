@@ -1,0 +1,99 @@
+﻿@inherits UmbracoViewPage
+
+@using Umbraco.Web.Models
+
+@{ 
+    string carouselId = "mainCarousel";
+    IEnumerable<IPublishedContent> carousel = Umbraco.AssignedContentItem.GetPropertyValue<IEnumerable<IPublishedContent>>(carouselId);
+}
+
+@if (carousel != null && carousel.Any())
+{
+
+
+  		<section class="banner">
+			<div class="rev_slider_wrapper">
+				<div id="main_slider" class="rev_slider"  data-version="5.0">
+					<ul>
+@{
+                int slideCount = 0;
+                foreach (IPublishedContent slide in carousel.Where(x => x.IsVisible()))
+                {
+                
+                  string title = slide.GetPropertyValue<string>("slideTitle");
+                    string subtitle = slide.HasValue("slideSubtitle") ? slide.GetPropertyValue<string>("slideSubtitle") : "";
+                    string imageUrl = slide.HasValue("slideImage") ? slide.GetPropertyValue<IPublishedContent>("slideImage").Url : "/img/carousel.jpg";
+                    IEnumerable<RelatedLink> links = slide.GetPropertyValue<IEnumerable<RelatedLink>>("slideLink");
+                    RelatedLink link = links != null ? links.FirstOrDefault() : null;
+                    
+                
+						<li data-transition="fade" class="slide_show slide_1"> <!-- Slide_show -->
+							<img class="rev-slidebg" data-bgparallax="3" data-bgposition="center center" data-duration="20000" data-ease="Linear.easeNone" data-kenburns="on" data-no-retina="" data-offsetend="0 0" data-offsetstart="0 0" data-rotateend="0" data-rotatestart="0" data-scaleend="100" data-scalestart="140" src="@(imageUrl)" alt="image">
+							<div class="main_heading tp-caption tp-resizeme"
+								data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']" 
+								data-y="['middle','middle','middle','middle']" data-voffset="['-83','-83','-83','-83']"
+				        		data-whitespace="nowrap"
+								data-transform_idle="o:1;"
+								data-transform_in="z:0;rX:0deg;rY:0;rZ:0;sX:1.5;sY:1.5;skX:0;skY:0;opacity:0;s:2000;e:Power3.easeInOut;" 
+								data-transform_out="y:[100%];s:1000;s:1000;" 
+								data-mask_out="x:inherit;y:inherit;s:inherit;e:inherit;" 
+								data-start="2000" 
+								data-splitin="none" 
+								data-splitout="none"
+								data-responsive_offset="on">
+								<h1>@title</h1>
+							</div>
+							<div class="tp-caption tp-resizeme"
+								data-x="['center','center','center','center']" data-hoffset="['-10','-10','-10','0']" 
+								data-y="['middle','middle','middle','middle']" data-voffset="['38','38','38','58']"
+								data-transform_idle="o:1;"
+								data-transform_in="z:0;rX:0;rY:0;rZ:0;sX:0.8;sY:0.8;skX:0;skY:0;opacity:0;s:1500;e:Power4.easeOut;" 
+								data-transform_out="y:[100%];s:1000;s:1000;" 
+								data-mask_out="x:inherit;y:inherit;s:inherit;e:inherit;" 
+								data-start="2300" 
+								data-splitin="none" 
+								data-splitout="none"
+								data-elementdelay="0.05"
+								data-responsive_offset="on">
+								<p>@subtitle </p>
+							</div>
+							<div class="tp-caption tp-resizeme"
+								data-x="['center','center','center','center','center']" data-hoffset="['-110','-110','-110','-110','-110']" 
+								data-y="['middle','middle','middle','middle','middle']" data-voffset="['137','137','137','137','130']"
+								data-transform_idle="o:1;"
+								data-transform_hover="o:1;rX:0;rY:0;rZ:0;z:0;s:300;e:Power1.easeInOut;"
+								data-style_hover="c:rgba(0, 154, 238, 1.00);bc:rgba(0, 154, 238, 1.00);cursor:pointer;"
+								data-transform_in="x:[-100%];z:0;rX:0deg;rY:0deg;rZ:0deg;sX:1;sY:1;skX:0;skY:0;opacity:0;s:2500;e:Power3.easeInOut;" 
+								data-transform_out="auto:auto;s:1000;e:Power2.easeInOut;" 
+								data-start="3500" 
+								data-splitin="none" 
+								data-splitout="none" 
+								data-actions='[{"event":"click","action":"scrollbelow","offset":"0px"}]'
+								data-responsive_offset="on">
+								<a href="/contact-us" class="contact_us transition3s">Contact us</a>
+							</div>
+							<div class="tp-caption tp-resizeme"
+								data-x="['center','center','center','center','center']" data-hoffset="['110','110','110','110','110']" 
+								data-y="['middle','middle','middle','middle','middle']" data-voffset="['137','137','137','137','130']"
+								data-transform_idle="o:1;"
+								data-transform_hover="o:1;rX:0;rY:0;rZ:0;z:0;s:300;e:Power1.easeInOut;"
+								data-style_hover="c:rgba(255, 255, 255, 1.00);bg:rgba(114, 168, 0, 1.00);cursor:pointer;"
+								data-transform_in="x:[100%];z:0;rX:0deg;rY:0deg;rZ:0deg;sX:1;sY:1;skX:0;skY:0;opacity:0;s:2500;e:Power3.easeInOut;" 
+								data-transform_out="auto:auto;s:1000;e:Power2.easeInOut;" 
+								data-start="3500" 
+								data-splitin="none" 
+								data-splitout="none" 
+								data-actions='[{"event":"click","action":"jumptoslide","slide":"next","delay":""}]'
+								data-responsive_offset="on">
+								<a href="/" class="read_more transition3s">Read More</a>
+							</div>
+						</li> <!-- /Slide_show -->
+ 
+						       slideCount++;
+                }
+            }
+					</ul>
+				</div> <!-- /main_slider -->
+			</div> <!-- /rev_slider_wrapper -->
+		</section> <!-- /banner -->
+		}

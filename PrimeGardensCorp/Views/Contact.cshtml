@@ -3,32 +3,149 @@
 @using Terratype;
 @{
     Layout = "Master.cshtml";
-}
-@Html.Partial("~/Views/Partials/SectionHeader.cshtml")
+} 
 
-<section class="section">
-    <div class="container">
 
-        <div class="row">
+	<!-- ============================= Inner Banner ========================== 
+	<section class="inner_banner">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+					<h3>Contact Us</h3>
+				</div>
+				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12" style="text-align:right;">
+					<a href="#" class="button_main get_in_touch transition3s">Get in Touch</a>
+				</div>
+			</div>
+		</div>
+	</section>--> <!-- /inner_banner -->
+	<!-- ============================= /Inner Banner ========================== -->
 
-            <div class="col-md-6">
-                <h2>@Model.Content.MapHeader</h2>
+		    
+<!-- ======================== google map ====================== -->
+		<div class="map">
+			 <h2>@Model.Content.MapHeader</h2>
                 @Html.Terratype(Model.Content.Map)
-            </div>
+                <br>
+		</div>
+	<!-- ======================= /google map ========================= -->
 
-            <div class="col-md-6">
-                <h2>@Model.Content.ContactFormHeader</h2>
-                @Model.Content.ContactIntro
-                <p class="compat-msg">
-        <em>Umbraco Forms</em> is required to render this form.It's a breeze to install, all you have to do is
-        go to the<em> Umbraco Forms</em> section in the back office and click Install, that's it! :) 
-        <br /><br />
-        <a href="/umbraco/#/forms" class="button button--border--solid">Go to Back Office and install Forms</a>
-        <!-- When Umbraco Forms is installed, uncomment this line -->
-        @* @Umbraco.RenderMacro("renderUmbracoForm", new {FormGuid=Model.Content.ContactForm.ToString()}) *@
-        </p>
-            </div>
+	
+	<!-- =============================== Contact us ========================== -->
+	<section class="contact_us">
+		<div class="container"> 
+			<div class="row heading">
+				<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+					<div class="title_holder2">
+						<h3>Get in <span>Touch</span></h3>
+					</div> <!-- /title_holder2 -->
+				</div>
+				<div class="col-lg-9 col-md-8 col-sm-6 col-xs-12">
+					<p>It’s our pleasure to answer any inquiry you might have about landscaping or gardening questions, just
+						use the form below or choose one of the alternative methods of communication. We’re available from
+						Monday to Friday, 07:30-19:00 to take your call.</p>
+				</div>
+			</div> <!-- /row -->
+			<div class="row contact_deatils">
+				<div class="col-lg-8 col-md-7 col-sm-6 col-xs-12 pull-right submit_form">
+					<form action="inc/sendemail.php" class="row contact-form">
+						<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+							<input type="text" name="fname" placeholder="First Name *">
+						</div>
+						<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+							<input type="text" placeholder="Last Name *" name="lname">
+						</div>
+						<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+							<input type="text" placeholder="Email (Optional)" name="email">
+						</div>
+						<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+							<input type="text" placeholder="Phone *" name="phone">
+						</div>
+						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+							<select class="selectmenu" name="street">
+								<option selected="selected">Street Address (Required)</option>
+								<option>Street Address</option>
+								<option>Street Address</option>
+								<option>Street Address</option>
+								<option>Street Address</option>
+								<option>Street Address</option>
+							</select>
+						</div>
+						<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+							<input type="text" placeholder="City (Required)" required name="city">
+						</div>
+						<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+							<input type="text" placeholder="Zip Code (Required)" required name="zip">
+						</div>
+						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+							<select class="selectmenu"  name="services">
+								<option selected="selected">Services</option>
+								<option>Awesome Service</option>
+								<option>Awesome Service</option>
+								<option>Awesome Service</option>
+								<option>Awesome Service</option>
+								<option>Awesome Service</option>
+								<option>Awesome Service</option>
+							</select>
+						</div>
+						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+							<textarea name="message" placeholder="How Can We Help?"></textarea>
+						</div>
+						<button type="submit" class="button_main send_now mouse_hover2 transition3s">Send Now</button>
+					</form>
+				</div>
+				<div class="col-lg-4 col-md-5 col-sm-6 col-xs-12 pull-left address">
+					<h4 style="line-height:45px;">Need Our Service Or Have Queries ?</h4>
+					<div class="address_holder">
+						<div class="address_type">
+							<div class="icon_holder border_round">
+								<div class="icon_bg border_round">
+									<i class="fa fa-map-marker"></i>
+								</div> <!-- /icon_bg -->
+							</div> <!-- /icon_holder -->
+							<div class="text">
+								<h5>Address</h5>
+								<p>220A Brooklyn Street <br>Columbia, SC 29201, London <br> United Kingdom</p>
+							</div> <!-- /text -->
+						</div> <!-- /address_type -->
 
-        </div>
-    </div>
-</section>
+						<div class="address_type">
+							<div class="icon_holder border_round">
+								<div class="icon_bg border_round">
+									<i class="fa fa-phone"></i>
+								</div> <!-- /icon_bg -->
+							</div> <!-- /icon_holder -->
+							<div class="text">
+								<h5>Contact Details</h5>
+								<p>Troll Free: 00419-306-2667</p>
+								<a href="mailto:iamsteelthemes@gmail.com">iamsteelthemes@gmail.com</a>
+							</div> <!-- /text -->
+						</div> <!-- /address_type -->
+
+						<div class="address_type">
+							<div class="icon_holder border_round">
+								<div class="icon_bg border_round">
+									<i class="fa fa-clock-o"></i>
+								</div> <!-- /icon_bg -->
+							</div> <!-- /icon_holder -->
+							<div class="text">
+								<h5>Working Hours</h5>
+								<ul style="margin-top: 14px;">
+									<li>Monday <span>07:00-17:00</span></li>
+									<li>Tuesday <span>07:00-17:00</span></li>
+									<li>Wednesday <span>07:00-17:00</span></li>
+									<li>Thursday <span>07:00-17:00</span></li>
+									<li>Friday <span>07:00-17:00</span></li>
+									<li>Saturday <span>07:00-17:00</span></li>
+									<li>Sunday <span>Closed</span></li>
+								</ul>
+							</div> <!-- /text -->
+						</div> <!-- /address_type -->
+
+					</div> <!-- /address_holder -->
+				</div>
+			</div> <!-- /contact_deatils -->
+		</div> <!-- /container -->
+	</section>
+
+	<!-- =============================== Contact us ========================== -->

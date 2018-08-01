@@ -3,11 +3,129 @@
 @{ 
     var site = Model.Content.Site();
     var selection = site.Children.Where(x => x.IsVisible());
+     var root = CurrentPage.AncestorOrSelf(1);
 }
-<!-- uncomment this line if you don't want it to appear in the top navigation -->
+
+<!-- uncomment this line if you don't want it to appear in the top navigation 
  <li class="nav-link @Html.Raw(Model.Content.Id == site.Id ? "menu-active" : "")"> <a  href="@site.Url">@site.Name</a></li>
 @foreach (var item in selection)
 {
    <li class="nav-link @(item.IsAncestorOrSelf(Model.Content) ? "menu-active" : null)" > <a href="@item.Url">@item.Name</a></li>
 }
+ -->
  
+
+	<div class="main_menu menu_fixed">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<nav class="navbar navbar-default">
+					   
+					   <!-- Collect the nav links, forms, and other content for toggling -->
+					   <div class="collapse navbar-collapse flt_left" id="navbar-collapse-1">
+					     <ul class="nav navbar-nav">
+					       <li><a class="transition-ease" href="@site.Url">@site.Name</a></li>
+					 <!--      
+					        <li class="sub_dropdown"><a class="transition-ease" href="about-gardener.html">About Us</a>
+					       		<ul class="sub_menu">
+					       			<li><a href="client-testimonals.html" class="transition-ease">Testimonals</a></li>
+					       			<li><a href="faq.html" class="transition-ease">FAQ</a></li>
+					       			<li><a href="404.html" class="transition-ease">404 Page</a></li>
+					       			<li><a href="price.html" class="transition-ease">Prices & Delivery</a></li>
+					       			<li><a href="checkout-page.html" class="transition-ease">Request Quote</a></li>
+					       		</ul>
+					       </li>
+					       <li class="sub_dropdown"><a class="transition-ease" href="/services">Services</a>
+	-->
+
+@foreach (var item in selection)
+{
+ var hasSubMenu = item.Children.Where(x => x.IsVisible());
+ if(hasSubMenu.Count()>0)
+ {
+   <li class="sub_dropdown"> <a href="@(item.Url)" class="transition-ease">@item.Name </a>
+    
+   	<ul class="sub_menu">
+      @foreach (var subMenu in hasSubMenu)
+     {
+       <li>
+         <a href="@subMenu.Url" class="transition-ease">
+           @subMenu.Name
+         </a>
+       </li>
+    } 
+     </ul>
+    </li> 
+   
+ 
+ } else {
+  <li> <a href="@item.Url" class="transition-ease">@item.Name</a></li>
+ }
+   
+}
+	
+	 
+<!--
+					       		<ul class="sub_menu">
+					       			<li><a href="design-and-planning.html" class="transition-ease">Sod</a></li>
+					       			<li><a href="lawn-and-garden-care.html" class="transition-ease">Artificial Turf</a></li>
+					       			<li><a href="irrigation-and-drainage.html" class="transition-ease">Irrigation Systems</a></li>
+					       			<li><a href="snow-and-ice-removal.html" class="transition-ease">Planting</a></li>
+					       			<li><a href="spring-fall-cleanup.html" class="transition-ease">Landscape Lighting</a></li>
+					       			<li><a href="stone-and-hardscaping.html" class="transition-ease">Design</a></li>
+					       			<li><a href="all-services.html" class="transition-ease">Decks</a></li>
+					       				<li><a href="all-services.html" class="transition-ease">Pavers</a></li>
+					       			<li><a href="all-services.html" class="transition-ease">Landscape Structures</a></li>
+					       			<li><a href="all-services.html" class="transition-ease">Retaining Wall</a></li>
+					       			<li><a href="all-services.html" class="transition-ease">Flagstone</a></li>
+					       			<li><a href="all-services.html" class="transition-ease">Concrete</a></li>
+					       		
+					       			
+					       		</ul>
+					       	
+					       </li>
+					       <li class="sub_dropdown"><a class="transition-ease" href="fullwidth-gallery.html">Warranty Information</a>
+					       		<ul class="sub_menu">
+					       			<li><a href="classic-gallery.html" class="transition-ease">Classic Gallery</a></li>
+					       			<li><a href="fullwidth-gallery.html" class="transition-ease">Fullwidth Gallery</a></li>
+					       			<li><a href="masanory_gallery.html" class="transition-ease">Masonary Style </a></li>
+					       			<li><a href="fullwidth-detail-page.html" class="transition-ease">Fullwidth Detail Page</a></li>
+					       		</ul>
+					       </li>
+					       <li class="sub_dropdown"><a class="transition-ease" href="blog-grid-without-sidebar.html">Portfolio</a>
+								<ul class="sub_menu">
+					       			<li><a href="blog-fullwidth-sidebar.html" class="transition-ease">Grid View With Sidebar</a></li>
+					       			<li><a href="blog-grid-without-sidebar.html" class="transition-ease">Grid View Without Sidebar</a></li>
+					       			<li><a href="blog-list-view.html" class="transition-ease">List View With Sidebar</a></li>
+					       			<li><a href="blog-single-post.html" class="transition-ease">Blog Single Post</a></li>
+					       		</ul>
+					       </li>
+					       <li class="sub_dropdown"><a class="transition-ease" href="shop.html">Shop</a>
+					       		<ul class="sub_menu">
+					       			<li><a href="shop.html" class="transition-ease">Shop Products</a></li>
+					       			<li><a href="shop-with-sidebar.html" class="transition-ease">Shop Products With Sidebar</a></li>
+					       			<li><a href="single-shop.html" class="transition-ease">Product Details</a></li>
+					       			<li><a href="cart.html" class="transition-ease">Cart Page</a></li>
+					       			<li><a href="checkout-page.html" class="transition-ease">Checkout Page</a></li>
+					       			<li><a href="login.html" class="transition-ease">Login / Register</a></li>
+					       		</ul>
+					       </li>  
+					       <li><a class="transition-ease" href="/contact-us">Contact Us</a></li>
+					     </ul>	-->
+					   </div><!-- /.navbar-collapse -->
+					   <!-- Brand and toggle get grouped for better mobile display -->
+					   <div class="navbar-header">
+					     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-1" aria-expanded="false">
+					       <span class="sr-only">Toggle navigation</span>
+					       <span class="icon-bar"></span>
+					       <span class="icon-bar"></span>
+					       <span class="icon-bar"></span>
+					     </button>
+					   </div>
+					  <!--  	<p class="navbar-text flt_left"><a href="tel: (800) 991-0238" class="transition4s"><i class="fa fa-phone"></i>(800)991-0238</a></p>
+					   -->
+					</nav> <!-- /navbar-default -->
+				</div>
+			</div> <!-- /row -->
+		</div> <!-- /container -->
+	</div> <!-- /main_menu -->

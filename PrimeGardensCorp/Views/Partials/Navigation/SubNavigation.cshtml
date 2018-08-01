@@ -3,9 +3,29 @@
 @{
     var siteSection = Model.Content.AncestorOrSelf(2);
     var selection = siteSection.Children.Where(x => x.IsVisible());
+    
+   // var pageTitle = Model.Content.GetPropertyValue("PageTitle");
+    var linkActive = false;
+    if(Model.Content.Name=="Services")
+    {
+    linkActive = true;
+    }
 }
 
+
+<div class="tab_nav_holder">
+      <ul class="nav nav-tabs tabs-left"><!-- 'tabs-right' for right tabs -->
+        <li class="@(linkActive ? "active" : null)"><a href="/services">See All Services</a></li>
 @foreach (var item in selection)
 {
-    <a class="nav-link nav-link--black nav-link--air-bottom @(item.IsAncestorOrSelf(Model.Content) ? "nav-link--active" : null)" href="@item.Url">@item.Name</a>
+   <li class="@(item.IsAncestorOrSelf(Model.Content) ? "active" : null)">  <a  href="@item.Url" >@item.Name</a></li>
 }
+
+
+	  </ul>
+	  </div>
+
+
+
+ 
+			

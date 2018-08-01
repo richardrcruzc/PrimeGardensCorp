@@ -3,24 +3,37 @@
 @{
     Layout = "Master.cshtml";
 }
+ 	@Html.Partial("~/Views/Partials/SectionHeader.cshtml")
+<!-- =================== services page content ================== -->
+	<section class="service_page_content">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-3 col-md-4 col-sm-12 col-xs-12">
+				     @Html.Partial("~/Views/Partials/Navigation/SubNavigation.cshtml")
+				
+				</div>
+				<div class="col-lg-9 col-md-8 col-sm-12 col-xs-12">
+					<div class="tab_details">
+					 <!-- Tab panes -->
+						<div class="tab-content">
+						    <div class="tab-pane fade row" id="all">
+						       
+								<div class="text col-lg-12 col-md-12 col-sm-12 col-xs-12">
+							      	<p>
+							      	      @Html.GetGridHtml(Model.Content, "bodyText", "bootstrap3-fluid")
+							      	</p>
+						      	</div>
+						       
+						    </div>
+						    
+						</div>
+					</div> <!-- End tab_details -->
+				</div>
+			</div> <!-- End row -->
 
-@Html.Partial("~/Views/Partials/SectionHeader.cshtml")
 
-<section class="section">
+		</div> <!-- End container -->
+	</section> <!-- /service_page_content -->
+	
+<!-- =================== /services page content ================== -->
 
-    <div class="container">
-
-        <div class="col-md-3">
-            <nav class="nav-bar nav-bar--list">
-                @Html.Partial("~/Views/Partials/Navigation/SubNavigation.cshtml")
-            </nav>
-        </div>
-
-        <div class="col-md-9">
-            <article>
-                @Html.GetGridHtml(Model.Content, "bodyText", "bootstrap3-fluid")
-            </article>
-        </div>
-    </div>
-
-</section>

@@ -1,6 +1,41 @@
-﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
-<section class="section section--themed section--header section--content-center-bottom">
-    <div class="section__hero-content">
-        <h1 class="no-air">@Model.Content.GetPropertyValue("PageTitle")</h1>
-    </div>
-</section>
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage 
+	<!-- ============================= Inner Banner ========================== -->
+	<section class="inner_banner">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+					<h3>@Model.Content.GetPropertyValue("PageTitle")</h3>
+				</div>
+				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12" style="text-align:right;">
+					<a href="#" class="button_main get_in_touch transition3s">Get in Touch</a>
+				</div>
+			</div>
+		</div>
+	</section> <!-- /inner_banner -->
+	<!-- ============================= /Inner Banner ========================== -->
+	
+	
+	<!-- ============================ BreadCrumb ============================= -->
+	<div class="breadcrumb">
+		<div class="container">
+			<ul>
+			    @if(Model.Content.Parent!=null)
+			    {
+        		    if(Model.Content.Parent.Name!="Home")
+        		    {
+        				<li><a href="/">Home</a></li>
+        				<li><i class="fa fa-caret-right"></i></li>
+        				<li><a href="@Model.Content.Parent.Url">@Model.Content.Parent.Name</a></li>
+        		   } else  {
+        		   		<li><a href="@Model.Content.Parent.Url">@Model.Content.Parent.Name</a></li>
+        		   
+        		   }
+			   }
+				<li><i class="fa fa-caret-right"></i></li>
+				 	<li class="active">@Model.Content.GetPropertyValue("PageTitle")</li>  
+				
+			</ul>
+		</div>
+	</div> <!-- /breadcrumb -->
+	<!-- ============================ /BreadCrumb ============================= -->
+ 
