@@ -110,17 +110,24 @@
 						
 					</div> <!-- /logo_holder -->
 				</div>
+				
+					<div class="col-lg-6 col-md-6 col-sm-4 col-xs-6">
+					    	<!-- ================================ Menu ============================== -->
+	@Html.Partial("~/views/partials/navigation/topNavigation.cshtml")
+  <!-- ================================ /Menu ============================== -->
+					</div>
+				<!-- 	
 				<div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
 					<div class="address">
 						<p>13636 Ventura Blvd #358</p>
 						<span>Sherman Oaks, CA 91423</span>
-					</div><!--  /address -->
+					</div>  
 				</div>
 				<div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
 					<div class="time_schedule">
 						<p>Mon - Sat 8.00 - 18.00</p>
 						<span>Sunday CLOSED</span>
-					</div><!--  /time_schedule -->
+					</div> 
 				</div>
 				<div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
 					<div class="social_icon_header">
@@ -131,6 +138,7 @@
 						</ul>
 					</div><!--  /social_icon_header -->
 				</div>
+				 -->
 			</div> <!-- /row -->
 		</div> <!-- /container -->
 	</div> <!-- /bottom_header -->
@@ -139,9 +147,7 @@
 
 	<!-- ============================= /Header ============================== -->
 
-	<!-- ================================ Menu ============================== -->
-	@Html.Partial("~/views/partials/navigation/topNavigation.cshtml")
-  <!-- ================================ /Menu ============================== -->
+ 
   @RenderBody() 
 
 	<!-- ============================== Footer ===================== -->

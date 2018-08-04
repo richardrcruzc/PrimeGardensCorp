@@ -240,7 +240,7 @@ a.mouse_hover3:focus {
 			/*========= Top header ==============*/
 
 .top_header {
-	background: #272727;
+	/*background: #272727;*/
 	padding: 10px 0;
 }
 .top_header p {
@@ -388,7 +388,7 @@ a.mouse_hover3:focus {
 	z-index: 9999;
 }
 .main_menu nav {
-	background: #6aaf08;
+	/*background: #6aaf08;*/
 	height:90px;
 	border:none;
 	border-radius: 0px;
